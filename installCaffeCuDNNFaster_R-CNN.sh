@@ -37,7 +37,12 @@ rm get-pip.py
 # Install python dependencies
 sudo apt-get update && apt-get install python-scipy python-nose python-h5py \
 python-skimage python-matplotlib python-pandas python-sklearn python-sympy -y
-apt-get clean && apt-get autoremove && rm -rf /var/lib/apt/lists/*
+apt-get clean && apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
+
+pip --no-cache-dir install --upgrade ipython && \
+pip --no-cache-dir install Cython easydict ipykernel jupyter path.py \
+Pillow protobuf pygments PyYAML six sphinx wheel zmq \
+&& python -m ipykernel.kernelspec
 
 # Place Faster_R-CNN and Caffe in the home directory
 cd $HOME
