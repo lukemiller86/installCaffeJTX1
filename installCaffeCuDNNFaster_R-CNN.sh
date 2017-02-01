@@ -12,7 +12,7 @@
 sudo add-apt-repository universe
 sudo apt-get update -y
 /bin/echo -e "\e[1;32mLoading Caffe Dependencies.\e[0m"
-sudo apt-get install git cmake -y
+sudo apt-get install git cmake curl -y
 # General Dependencies
 sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev \
 libhdf5-serial-dev protobuf-compiler -y
@@ -35,8 +35,8 @@ rm get-pip.py
 # pip --no-cache-dir install pyopenssl ndg-httpsclient pyasn1
 
 # Install python dependencies
-sudo apt-get update && apt-get install -y python-scipy python-nose python-h5py \
-python-skimage python-matplotlib python-pandas python-sklearn python-sympy \
+sudo apt-get update && apt-get install python-scipy python-nose python-h5py \
+python-skimage python-matplotlib python-pandas python-sklearn python-sympy -y
 apt-get clean && apt-get autoremove && rm -rf /var/lib/apt/lists/*
 
 # Place Faster_R-CNN and Caffe in the home directory
