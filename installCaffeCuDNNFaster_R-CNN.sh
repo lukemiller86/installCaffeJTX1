@@ -50,15 +50,7 @@ echo "LIBRARY_DIRS += /usr/local/share/" >> Makefile.config
 # Enable support layers written in python
 sed -i 's/# WITH_PYTHON_LAYER/WITH_PYTHON_LAYER/g' Makefile.config
 
-
-CAFFE_ROOT=$HOME/faster_rcnn/caffe-fast-rcnn
-export CAFFE_ROOT
-PYCAFFE_ROOT=$CAFFE_ROOT/python
-export PYCAFFE_ROOT
-PYTHONPATH=$PYCAFFE_ROOT:$PYTHONPATH \
-	PATH=$CAFFE_ROOT/build/tools:$PYCAFFE_ROOT:$PATH
-export PYTHONPATH
-export PATH
+echo 'CAFFE_ROOT=$HOME/faster_rcnn/caffe-fast-rcnn' >> /etc/environment
 
 echo "$CAFFE_ROOT/build/lib" >> /etc/ld.so.conf.d/caffe.conf && ldconfig
 
