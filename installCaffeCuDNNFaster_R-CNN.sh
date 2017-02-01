@@ -26,6 +26,19 @@ sudo apt-get install python-dev python-numpy -y
 sudo usermod -a -G video $USER
 /bin/echo -e "\e[1;32mCloning Caffe into the home directory\e[0m"
 
+# Install pip
+curl -O https://bootstrap.pypa.io/get-pip.py && \
+python get-pip.py && \
+rm get-pip.py
+
+# Add SNI support to Python
+# pip --no-cache-dir install pyopenssl ndg-httpsclient pyasn1
+
+# Install python dependencies
+sudo apt-get update && apt-get install -y python-scipy python-nose python-h5py \
+python-skimage python-matplotlib python-pandas python-sklearn python-sympy \
+apt-get clean && apt-get autoremove && rm -rf /var/lib/apt/lists/*
+
 # Place Faster_R-CNN and Caffe in the home directory
 cd $HOME
 # Git clone Faster R-CNN WITHOUT recursion
@@ -51,19 +64,19 @@ echo "LIBRARY_DIRS += /usr/local/share/" >> Makefile.config
 sed -i 's/# WITH_PYTHON_LAYER/WITH_PYTHON_LAYER/g' Makefile.config
 
 
-touch ~/.bash_profile
+#touch ~/.bash_profile
 #echo "source ~/.bashrc && source ~/.profile" >> ~.bash_profile
 
-echo "export CAFFE_ROOT=~/faster_rcnn/caffe-fast-rcnn" >> ~/.bash_profile
-source ~/.bash_profile
-echo "export PYCAFFE_ROOT=$CAFFE_ROOT/python" >> ~/.bash_profile
-source ~/.bash_profile
-echo "export PYTHONPATH=$PYCAFFE_ROOT:$PYTHONPATH" >> ~/.bash_profile
-source ~/.bash_profile
-echo "export PATH=$CAFFE_ROOT/build/tools:$PYCAFFE_ROOT:$PATH" >> ~/.bash_profile
-source ~/.bash_profile
+#echo "export CAFFE_ROOT=~/faster_rcnn/caffe-fast-rcnn" >> ~/.bash_profile
+#source ~/.bash_profile
+#echo "export PYCAFFE_ROOT=$CAFFE_ROOT/python" >> ~/.bash_profile
+#source ~/.bash_profile
+#echo "export PYTHONPATH=$PYCAFFE_ROOT:$PYTHONPATH" >> ~/.bash_profile
+#source ~/.bash_profile
+#echo "export PATH=$CAFFE_ROOT/build/tools:$PYCAFFE_ROOT:$PATH" >> ~/.bash_profile
+#source ~/.bash_profile
 
-echo "$CAFFE_ROOT/build/lib" >> /etc/ld.so.conf.d/caffe.conf && ldconfig
+#echo "$CAFFE_ROOT/build/lib" >> /etc/ld.so.conf.d/caffe.conf && ldconfig
 
 /bin/echo -e "\e[1;32mCompiling Caffe\e[0m"
 make all -j $(($(nproc) + 1))
