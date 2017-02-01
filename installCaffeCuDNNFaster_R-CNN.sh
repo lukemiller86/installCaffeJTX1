@@ -56,13 +56,13 @@ make all -j $(($(nproc) + 1))
 # Run the tests to make sure everything works
 # /bin/echo -e "\e[1;32mRunning Caffe Tests\e[0m"
 # Rename file in order to run Caffe tests
-mv faster_rcnn/caffe-fast-rcnn/src/caffe/test/test_smooth_L1_loss_layer.cpp faster_rcnn/caffe-fast-rcnn/src/caffe/test/test_smooth_L1_loss_layer.cpp.orig
+mv src/caffe/test/test_smooth_L1_loss_layer.cpp src/caffe/test/test_smooth_L1_loss_layer.cpp.orig
 
 # make test -j $(($(nproc) + 1)) --  is this needed???
 # make runtest -j $(($(nproc) + 1)) --  this doesn't work on AWS
 
 # Restore file we moved earlier
-mv faster_rcnn/caffe-fast-rcnn/src/caffe/test/test_smooth_L1_loss_layer.cpp.orig faster_rcnn/caffe-fast-rcnn/src/caffe/test/test_smooth_L1_loss_layer.cpp
+mv src/caffe/test/test_smooth_L1_loss_layer.cpp.orig src/caffe/test/test_smooth_L1_loss_layer.cpp
 
 # The following is a quick timing test ...
 # tools/caffe time --model=models/bvlc_alexnet/deploy.prototxt --gpu=0
