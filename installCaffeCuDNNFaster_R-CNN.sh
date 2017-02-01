@@ -58,6 +58,8 @@ echo "export PYTHONPATH=$PYCAFFE_ROOT:$PYTHONPATH" >> $HOME/.bashrc
 source $HOME/.bashrc
 echo "export PATH=$CAFFE_ROOT/build/tools:$PYCAFFE_ROOT:$PATH" >> $HOME/.bashrc
 source $HOME/.bashrc
+touch $HOME/.bash_login
+echo "source $HOME/.bashrc" >> $HOME/.bash_login
 
 echo "$CAFFE_ROOT/build/lib" >> /etc/ld.so.conf.d/caffe.conf && ldconfig
 
