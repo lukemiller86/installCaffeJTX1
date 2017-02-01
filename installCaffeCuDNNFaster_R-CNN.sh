@@ -55,8 +55,11 @@ touch ~/.bash_profile
 #echo "source ~/.bashrc && source ~/.profile" >> ~.bash_profile
 
 echo "export CAFFE_ROOT=~/faster_rcnn/caffe-fast-rcnn" >> ~/.bash_profile
+source ~/.bash_profile
 echo "export PYCAFFE_ROOT=$CAFFE_ROOT/python" >> ~/.bash_profile
+source ~/.bash_profile
 echo "export PYTHONPATH=$PYCAFFE_ROOT:$PYTHONPATH" >> ~/.bash_profile
+source ~/.bash_profile
 echo "export PATH=$CAFFE_ROOT/build/tools:$PYCAFFE_ROOT:$PATH" >> ~/.bash_profile
 source ~/.bash_profile
 
