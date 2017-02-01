@@ -56,12 +56,12 @@ make all -j $(($(nproc) + 1))
 # Run the tests to make sure everything works
 /bin/echo -e "\e[1;32mRunning Caffe Tests\e[0m"
 # Rename file in order to run Caffe tests
-mv src/caffe/test/test_smooth_L1_loss_layer.cpp src/caffe/test/test_smooth_L1_loss_layer.cpp.orig
+# mv src/caffe/test/test_smooth_L1_loss_layer.cpp src/caffe/test/test_smooth_L1_loss_layer.cpp.orig
 
 make runtest -j $(($(nproc) + 1))
 
 # Restore file we moved earlier
-mv src/caffe/test/test_smooth_L1_loss_layer.cpp.orig src/caffe/test/test_smooth_L1_loss_layer.cpp
+# mv src/caffe/test/test_smooth_L1_loss_layer.cpp.orig src/caffe/test/test_smooth_L1_loss_layer.cpp
 
 # The following is a quick timing test ...
 tools/caffe time --model=models/bvlc_alexnet/deploy.prototxt --gpu=0
