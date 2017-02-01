@@ -51,14 +51,14 @@ echo "LIBRARY_DIRS += /usr/local/share/" >> Makefile.config
 sed -i 's/# WITH_PYTHON_LAYER/WITH_PYTHON_LAYER/g' Makefile.config
 
 
-touch $HOME/.bash_profile
-echo "source ~/.bashrc && source ~/.profile" >> $HOME/.bash_profile
+touch ~/.bash_profile
+#echo "source ~/.bashrc && source ~/.profile" >> ~.bash_profile
 
-echo "export CAFFE_ROOT=$HOME/faster_rcnn/caffe-fast-rcnn" >> $HOME/.profile
-echo "export PYCAFFE_ROOT=$CAFFE_ROOT/python" >> $HOME/.profile
-echo "export PYTHONPATH=$PYCAFFE_ROOT:$PYTHONPATH" >> $HOME/.profile
-echo "export PATH=$CAFFE_ROOT/build/tools:$PYCAFFE_ROOT:$PATH" >> $HOME/.profile
-source $HOME/.bashrc && source $HOME/.profile
+echo "export CAFFE_ROOT=~/faster_rcnn/caffe-fast-rcnn" >> ~/.bash_profile
+echo "export PYCAFFE_ROOT=$CAFFE_ROOT/python" >> ~/.bash_profile
+echo "export PYTHONPATH=$PYCAFFE_ROOT:$PYTHONPATH" >> ~/.bash_profile
+echo "export PATH=$CAFFE_ROOT/build/tools:$PYCAFFE_ROOT:$PATH" >> ~/.bash_profile
+source ~/.bash_profile
 
 echo "$CAFFE_ROOT/build/lib" >> /etc/ld.so.conf.d/caffe.conf && ldconfig
 
