@@ -58,6 +58,7 @@ echo "export CAFFE_ROOT=$HOME/faster_rcnn/caffe-fast-rcnn" >> $HOME/.profile
 echo "export PYCAFFE_ROOT=$CAFFE_ROOT/python" >> $HOME/.profile
 echo "export PYTHONPATH=$PYCAFFE_ROOT:$PYTHONPATH" >> $HOME/.profile
 echo "export PATH=$CAFFE_ROOT/build/tools:$PYCAFFE_ROOT:$PATH" >> $HOME/.profile
+source $HOME/.bashrc && source $HOME/.profile
 
 echo "$CAFFE_ROOT/build/lib" >> /etc/ld.so.conf.d/caffe.conf && ldconfig
 
