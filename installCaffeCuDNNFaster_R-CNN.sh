@@ -52,16 +52,15 @@ sed -i 's/# WITH_PYTHON_LAYER/WITH_PYTHON_LAYER/g' Makefile.config
 
 /bin/echo -e "\e[1;32mCompiling Caffe\e[0m"
 make all -j $(($(nproc) + 1))
-# make pycaffe
-# Run the tests to make sure everything works
-/bin/echo -e "\e[1;32mRunning Caffe Tests\e[0m"
+make pycaffe
+
 # Rename file in order to run Caffe tests
 # mv src/caffe/test/test_smooth_L1_loss_layer.cpp src/caffe/test/test_smooth_L1_loss_layer.cpp.orig
-
-make runtest -j $(($(nproc) + 1))
-
+# Run the tests to make sure everything works
+# /bin/echo -e "\e[1;32mRunning Caffe Tests\e[0m"
+# make runtest -j $(($(nproc) + 1))
 # Restore file we moved earlier
 # mv src/caffe/test/test_smooth_L1_loss_layer.cpp.orig src/caffe/test/test_smooth_L1_loss_layer.cpp
 
 # The following is a quick timing test ...
-tools/caffe time --model=models/bvlc_alexnet/deploy.prototxt --gpu=0
+# tools/caffe time --model=models/bvlc_alexnet/deploy.prototxt --gpu=0
