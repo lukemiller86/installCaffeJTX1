@@ -44,6 +44,9 @@ pip --no-cache-dir install Cython easydict ipykernel jupyter path.py \
 Pillow protobuf pygments PyYAML six sphinx wheel zmq \
 && python -m ipykernel.kernelspec
 
+# Install python (bindings?) for opencv
+sudo apt-get update $$ apt-get install libopencv4tegra-python python-opencv -y
+
 # Place Faster_R-CNN and Caffe in the home directory
 cd $HOME
 # Git clone Faster R-CNN WITHOUT recursion
@@ -94,6 +97,12 @@ make pycaffe
 # make runtest -j $(($(nproc) + 1))
 # Restore file we moved earlier
 # mv src/caffe/test/test_smooth_L1_loss_layer.cpp.orig src/caffe/test/test_smooth_L1_loss_layer.cpp
+
+# Build Cython modules
+cd $HOME/faster_rcnn/lib/ && make
+
+# Download pre-computed Faster R-CNN detectors
+cd $HOME/faster_rcnn/ && ./data/scripts/fetch_faster_rcnn_models.sh
 
 # The following is a quick timing test ...
 # tools/caffe time --model=models/bvlc_alexnet/deploy.prototxt --gpu=0
