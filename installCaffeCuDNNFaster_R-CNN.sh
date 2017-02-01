@@ -51,8 +51,8 @@ echo "LIBRARY_DIRS += /usr/local/share/" >> Makefile.config
 sed -i 's/# WITH_PYTHON_LAYER/WITH_PYTHON_LAYER/g' Makefile.config
 
 
-touch $HOME/.bash_login
-echo "source ~/.bashrc && source ~/.profile" >> $HOME/.bash_login
+touch $HOME/.bash_profile
+echo "source ~/.bashrc && source ~/.profile" >> $HOME/.bash_profile
 
 echo "export CAFFE_ROOT=$HOME/faster_rcnn/caffe-fast-rcnn" >> $HOME/.profile
 echo "export PYCAFFE_ROOT=$CAFFE_ROOT/python" >> $HOME/.profile
